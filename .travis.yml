@@ -2,4 +2,7 @@ sudo: required
 services:
   - docker
 script:
-  - docker build -t myapp .
+  - docker build -t jmsosso/myapp .
+after_success:
+  - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+  - docker push jmsosso/myapp
